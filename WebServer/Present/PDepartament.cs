@@ -1,10 +1,6 @@
 ﻿using Less5_DZ_Viktor_Vill;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
 
 namespace WebServer.Present
 {
@@ -53,12 +49,12 @@ namespace WebServer.Present
             try
             {
                 string command = $@"INSERT INTO Departament (Name) VALUES (N'{departament.DepartamentName}')";
-                using (SqlCommand com = new SqlCommand(command,connection))
+                using (SqlCommand com = new SqlCommand(command, connection))
                 {
                     com.ExecuteNonQuery();
                 }
             }
-            catch 
+            catch
             {
                 return false;
             }
