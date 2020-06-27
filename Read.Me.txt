@@ -1,0 +1,39 @@
+Имя БД (Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VictorSlaves;)
+	VictorSlaves
+
+Таблица отделов
+	CREATE TABLE [dbo].[Departament] (
+		[Name] NCHAR (50) NOT NULL,
+		PRIMARY KEY CLUSTERED ([Name] ASC)
+	);
+	
+Таблица работников
+	CREATE TABLE [dbo].[Workers] (
+		[Id]          INT          NOT NULL IDENTITY,
+		[Name]        VARCHAR (50) NULL,
+		[Firstname]   VARCHAR (50) NULL,
+		[Departament] NCHAR (10)   NULL,
+		[Position]    VARCHAR (50) NULL,
+		[Birthday]    DATE         NULL ,
+		PRIMARY KEY CLUSTERED ([Id] ASC),
+		CONSTRAINT [FK_Workers_ToTable] FOREIGN KEY ([Departament]) REFERENCES [dbo].[Departament] ([Name])
+	);
+	
+Добалять данные по порядку как указанно
+	
+1) Добавление данных в таблицу отделов	
+	INSERT INTO [dbo].[Departament] ([Name]) VALUES (N'depart1                                           ')
+	INSERT INTO [dbo].[Departament] ([Name]) VALUES (N'depart2                                           ')
+	INSERT INTO [dbo].[Departament] ([Name]) VALUES (N'depart3                                           ')
+	INSERT INTO [dbo].[Departament] ([Name]) VALUES (N'depart4                                           ')
+	INSERT INTO [dbo].[Departament] ([Name]) VALUES (N'depart5                                           ')
+
+
+	
+2) Добавление данных в таблицу работников
+	SET IDENTITY_INSERT [dbo].[Workers] ON
+	INSERT INTO [dbo].[Workers] ([Id], [Name], [Firstname], [Departament], [Position], [Birthday]) VALUES (1, N'redcg                                             ', N'dfhtdfhgdh                                        ', N'depart1                                           ', N'dghdfhgdgh                                        ', N'1920-05-17')
+	INSERT INTO [dbo].[Workers] ([Id], [Name], [Firstname], [Departament], [Position], [Birthday]) VALUES (2, N'sdfsdf                                            ', N'dsfsdf                                            ', N'depart2                                           ', N'sdfsdf                                            ', N'2015-08-11')
+	INSERT INTO [dbo].[Workers] ([Id], [Name], [Firstname], [Departament], [Position], [Birthday]) VALUES (3, N'dfgdfgdfg                                         ', N'dfgdfgdfg                                         ', N'depart3                                           ', N'dfgdfhdfg                                         ', N'1980-07-11')
+	INSERT INTO [dbo].[Workers] ([Id], [Name], [Firstname], [Departament], [Position], [Birthday]) VALUES (4, N'dfgdfgdfg                                         ', N'dfhfdgsdf                                         ', N'depart4                                           ', N'sdfaqsdasf                                        ', N'1995-08-08')
+	SET IDENTITY_INSERT [dbo].[Workers] OFF
